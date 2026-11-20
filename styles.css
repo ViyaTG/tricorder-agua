@@ -79,6 +79,17 @@ h3 { line-height: 1.24; letter-spacing: -.025em; }
 .featured { background: #e8f5e1; border-color: #a8cba5; }
 .compare-note { margin-top: 1.15rem; font-size: .92rem; }
 
+.benefits { background: var(--forest); color: #f5faee; }
+.benefits .eyebrow { color: var(--mint); }
+.benefits .section-heading > p:last-child, .benefits-grid p, .cloud-access p { color: #d1dfd5; }
+.benefits-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.benefits-grid article, .cloud-access { padding: clamp(1.1rem, 3vw, 1.85rem); border: 1px solid #ffffff32; border-radius: 1rem; }
+.benefits-grid article { background: #203a30; }
+.benefits-grid h3, .cloud-access h3 { font-size: 1.28rem; }
+.benefits-grid p, .cloud-access p { margin-top: .65rem; }
+.cloud-access { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.15rem 2rem; margin-top: 1rem; border-color: #73977a; }
+.cloud-access > div { flex: 1 1 24rem; }
+
 .workspace { background: #e9f1e6; }
 .dashboard { border: 1px solid #c4d7c5; border-radius: 1.05rem; background: #fff; overflow: hidden; }
 .dashboard-top, .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .9rem; padding: 1.15rem clamp(.8rem, 2.7vw, 1.65rem); }
@@ -114,6 +125,7 @@ tbody tr:nth-child(even) th { background: #fafcf9; }
 
 @media (max-width: 35rem) {
   .topbar { flex-wrap: wrap; gap: .25rem 1.1rem; padding-block: .7rem; }
+  .benefits-grid { grid-template-columns: 1fr; }
   .sensor-strip { grid-template-columns: 1fr; }
   .sensor-strip > div + div { border-left: 0; border-top: 1px solid #ffffff29; }
   h1 { font-size: clamp(2.75rem, 13vw, 4.75rem); }

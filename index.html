@@ -6,7 +6,7 @@
   <meta name="description" content="Da seguimiento al agua de pozos y cisternas con Tricorder Agua. Registra temperatura y señales de pH y turbidez por punto de muestreo y comparte el historial con tu laboratorio.">
   <meta name="theme-color" content="#10241f">
   <title>Tricorder Agua | Auditoría de agua en campo</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=ventajas">
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="shell topbar">
       <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"></span> Tricorder<span>Agua</span></a>
       <nav aria-label="Principal">
-        <a href="#sistema">El sistema</a><a href="#comparativa">Comparativa</a><a class="nav-cta" href="#panel">Abrir panel</a>
+        <a href="#sistema">El sistema</a><a href="#ventajas">Ventajas</a><a href="#comparativa">Comparativa</a><a class="nav-cta" href="#panel">Abrir panel</a>
       </nav>
     </div>
   </header>
@@ -29,8 +29,8 @@
           <div class="actions"><a class="button primary" href="#panel">Explorar demo</a><a class="button outline" href="#usos">Ver casos de uso</a></div>
         </div>
         <figure class="hero-figure">
-          <img src="prototipo.jpg" width="1000" height="1000" alt="Concepto del prototipo de cartón con sondas junto a un recipiente de agua etiquetado" fetchpriority="high">
-          <figcaption>Visualización conceptual del prototipo</figcaption>
+          <img src="prototipo.jpg?v=pozo" width="900" height="900" alt="Prototipo de cartón junto a un pozo de piedra, con un cable de la sonda que baja hacia el agua" fetchpriority="high">
+          <figcaption>Visualización conceptual del equipo en un pozo</figcaption>
         </figure>
       </div>
       <div class="shell sensor-strip" aria-label="Sensores integrados">
@@ -61,6 +61,33 @@
         <li><h3>Registra los tres sensores</h3><p>El reloj DS1307 marca la hora. El equipo indica si las señales de pH y turbidez se estabilizaron durante la captura.</p></li>
         <li><h3>Comparte el historial</h3><p>Descarga el CSV desde el Wi-Fi del equipo. Ábrelo en el panel web o comparte una copia publicada con tu equipo de laboratorio.</p></li>
       </ol>
+    </section>
+
+    <section class="benefits" id="ventajas" aria-labelledby="ventajas-titulo">
+      <div class="section shell">
+        <div class="section-heading">
+          <p class="eyebrow">Por qué elegir Tricorder Agua</p>
+          <h2 id="ventajas-titulo">Mide en campo. Consulta desde donde estés.</h2>
+          <p>Tricorder Agua está pensado para comparar lecturas del mismo pozo o cisterna entre visitas, incluso cuando distintas personas toman las muestras.</p>
+        </div>
+        <div class="benefits-grid">
+          <article>
+            <h3>Tres lecturas en una visita</h3>
+            <p>Registra la temperatura y las señales de pH y turbidez en una sola toma. La etiqueta RFID vincula las lecturas al punto de muestreo y el equipo guarda la fecha y la hora. Así puedes comparar visitas sin copiar cada dato a mano.</p>
+          </article>
+          <article>
+            <h3>El laboratorio recibe un historial listo para revisar</h3>
+            <p>El personal puede filtrar por punto de muestreo, revisar cuándo se tomó cada lectura y ver qué señales se estabilizaron. El CSV se abre en una hoja de cálculo y permite continuar el análisis sin volver a capturar los datos.</p>
+          </article>
+        </div>
+        <div class="cloud-access">
+          <div>
+            <h3>Tu historial en la nube, a cualquier hora</h3>
+            <p>Una vez publicado el CSV en la nube, tú y el laboratorio pueden consultar y descargar las lecturas desde cualquier lugar con internet. Basta con abrir el panel desde un celular o una computadora.</p>
+          </div>
+          <a class="button primary" href="#panel">Ver panel de muestras</a>
+        </div>
+      </div>
     </section>
 
     <section class="workspace" id="panel" aria-labelledby="panel-titulo">
