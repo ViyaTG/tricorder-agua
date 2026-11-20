@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tricorder Agua registra temperatura, pH y turbidez con trazabilidad RFID y exporta tus muestras para el laboratorio.">
+  <meta name="theme-color" content="#10241f">
+  <title>Tricorder Agua | Auditoría de agua en campo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <div class="shell topbar">
+      <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"></span> Tricorder<span>Agua</span></a>
+      <nav aria-label="Principal">
+        <a href="#sistema">El sistema</a><a href="#comparativa">Comparativa</a><a class="nav-cta" href="#panel">Abrir panel</a>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Estación portátil de auditoría</p>
+          <h1>Cada muestra,<br><em>con historia.</em></h1>
+          <p class="intro">Registra temperatura, pH y turbidez en campo. Vincula cada lectura con su recipiente mediante RFID y entrega al laboratorio un historial listo para consultar.</p>
+          <div class="actions"><a class="button primary" href="#panel">Explorar demo</a><a class="button outline" href="#sistema">Cómo funciona</a></div>
+        </div>
+        <figure class="hero-figure">
+          <img src="prototipo.jpg" width="1000" height="1000" alt="Concepto del prototipo de cartón con sondas junto a un recipiente de agua etiquetado" fetchpriority="high">
+          <figcaption>Visualización conceptual del prototipo</figcaption>
+        </figure>
+      </div>
+      <div class="shell sensor-strip" aria-label="Sensores integrados">
+        <div><span class="sensor-icon ph" aria-hidden="true">pH</span><div><strong>pH</strong><small>Señal analógica</small></div></div>
+        <div><span class="sensor-icon" aria-hidden="true">°C</span><div><strong>Temperatura</strong><small>Sonda DS18B20</small></div></div>
+        <div><span class="sensor-icon" aria-hidden="true">≋</span><div><strong>Turbidez</strong><small>Señal analógica</small></div></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="sistema" aria-labelledby="sistema-titulo">
+      <div class="section-heading"><p class="eyebrow">Flujo de muestreo</p><h2 id="sistema-titulo">Del recipiente al registro</h2><p>Un ESP32-S3, tres sensores y un lector RFID en una estación portátil con carcasa de cartón.</p></div>
+      <ol class="steps">
+        <li><h3>Identifica el recipiente</h3><p>Acerca el lector al sticker RFID del tanque o punto de muestreo. La estación usa el identificador de la etiqueta para asociar las lecturas.</p></li>
+        <li><h3>Registra los tres sensores</h3><p>El reloj DS1307 marca la hora. El equipo indica si las señales de pH y turbidez se estabilizaron durante la captura.</p></li>
+        <li><h3>Comparte el historial</h3><p>Descarga el CSV desde el Wi-Fi del equipo. Ábrelo en el panel web o comparte una copia publicada con tu equipo de laboratorio.</p></li>
+      </ol>
+    </section>
+
+    <section class="workspace" id="panel" aria-labelledby="panel-titulo">
+      <div class="section shell">
+        <div class="section-heading"><p class="eyebrow">Panel de auditoría</p><h2 id="panel-titulo">Consulta tus muestras</h2><p>Filtra por identificador RFID y descarga las filas visibles en el formato original del equipo.</p></div>
+        <noscript><p>Activa JavaScript para consultar e importar muestras en el panel.</p></noscript>
+        <div class="dashboard" id="dashboard" hidden>
+          <div class="dashboard-top">
+            <div><p class="source" id="source">Datos de demostración</p><h3>Historial de muestras</h3></div>
+            <div class="actions">
+              <button type="button" class="button light" id="demo" hidden>Ver demo</button>
+              <button type="button" class="button light" id="cloud" hidden>Ver archivo publicado</button>
+              <button type="button" class="button light" id="import">Importar CSV</button>
+              <input type="file" id="file" accept=".csv,text/csv" hidden>
+              <button type="button" class="button dark" id="download">Descargar CSV</button>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="filter"><label for="tank">Recipiente RFID</label><select id="tank"><option value="">Todos los recipientes</option></select></div>
+            <p id="count" role="status"></p>
+          </div>
+          <p id="message" class="message" role="alert" hidden></p>
+          <div class="table-scroll" role="region" tabindex="0" aria-label="Tabla desplazable del historial de muestras">
+            <table>
+              <caption class="sr-only">Lecturas por recipiente y fecha, de la más reciente a la más antigua</caption>
+              <thead><tr><th scope="col">Fecha y hora (RTC)</th><th scope="col">RFID</th><th scope="col">Temp. (°C)</th><th scope="col">pH (ADC)</th><th scope="col">Turbidez (ADC)</th><th scope="col">pH estable</th><th scope="col">Turb. estable</th></tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <p class="table-note">pH y turbidez se registran en cuentas ADC (0–4095). Su conversión a unidades de pH o NTU requiere calibración.</p>
+        </div>
+        <details class="connection"><summary>Cómo abrir el CSV del equipo</summary><p>Conéctate a <strong>Tricorder-Agua</strong> y descarga <code>muestras.csv</code> desde su panel local. Vuelve a este panel y selecciona <strong>Importar CSV</strong>. El archivo se procesa en tu navegador.</p><a href="http://192.168.4.1/" target="_blank" rel="noopener">Abrir el panel local del ESP32</a></details>
+      </div>
+    </section>
+
+    <section class="section shell" id="comparativa" aria-labelledby="comparativa-titulo">
+      <div class="section-heading"><p class="eyebrow">Comparativa</p><h2 id="comparativa-titulo">Elige según tu muestreo</h2><p>Tricorder Agua es una opción para levantamientos piloto que necesitan reunir tres señales y seguir cada recipiente desde la toma hasta el archivo.</p></div>
+      <div class="comparison">
+        <article class="compare-card featured"><p class="eyebrow">Prototipo</p><h3>Tricorder Agua</h3><p>Temperatura en °C, señales crudas de pH y turbidez, identificación RFID, fecha y exportación CSV por Wi-Fi local.</p></article>
+        <article class="compare-card"><p class="eyebrow">Analizador de bolsillo</p><h3>Hanna HI98129</h3><p>Combina pH, conductividad, sólidos disueltos y temperatura. Su formato compacto favorece mediciones puntuales.</p><a href="https://hannainst.com/hi98129-ph-ec-tds-tester.html">Ficha de Hanna Instruments</a></article>
+        <article class="compare-card"><p class="eyebrow">Turbidímetro portátil</p><h3>Hach 2100Q</h3><p>Equipo especializado para turbidez en NTU, con registro de hasta 500 resultados y transferencia con el módulo USB.</p><a href="https://www.hach.com/p-2100q-portable-turbidimeter-kit-epa-0-1000-ntu-with-usb-and-power-module/2100Q01USB">Ficha de Hach</a></article>
+      </div>
+      <p class="compare-note">La comparación se centra en el flujo de trabajo. Tricorder Agua es un prototipo para monitoreo exploratorio.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell topbar"><a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"></span> Tricorder<span>Agua</span></a><p>Proyecto de Sistemas Embebidos</p></div></footer>
+</body>
+</html>
