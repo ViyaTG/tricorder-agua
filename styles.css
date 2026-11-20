@@ -63,6 +63,7 @@ h1 em { color: var(--mint); font-weight: 400; }
 .sensor-icon { display: grid; place-items: center; flex: 0 0 2.35rem; height: 2.35rem; border-radius: 50%; color: var(--mint); border: 1px solid #61876c; font-weight: 700; }
 
 .section { padding-block: clamp(3rem, 7vw, 6rem); }
+.sampling { border-top: 1px solid var(--line); }
 .section-heading { max-width: 42rem; margin-bottom: 2rem; }
 h2 { font-size: clamp(2.6rem, 5vw, 4.65rem); line-height: 1.01; margin: .5rem 0 .85rem; }
 h3 { line-height: 1.24; letter-spacing: -.025em; }
@@ -73,6 +74,7 @@ h3 { line-height: 1.24; letter-spacing: -.025em; }
 .steps li::before { counter-increment: workflow; content: counter(workflow); display: grid; place-items: center; margin-bottom: 1rem; width: 2.15rem; height: 2.15rem; border-radius: 50%; background: #e6f5e1; color: #265838; font-weight: 750; }
 .steps p, .compare-card p:not(.eyebrow) { margin-top: .65rem; }
 .compare-card h3 { margin-top: .55rem; }
+.compare-card h3:first-child { margin-top: 0; }
 .compare-card a { display: inline-block; margin-top: .85rem; font-weight: 650; color: #28613c; }
 .featured { background: #e8f5e1; border-color: #a8cba5; }
 .compare-note { margin-top: 1.15rem; font-size: .92rem; }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tricorder Agua registra temperatura, pH y turbidez con trazabilidad RFID y exporta tus muestras para el laboratorio.">
+  <meta name="description" content="Da seguimiento al agua de pozos y cisternas con Tricorder Agua. Registra temperatura y señales de pH y turbidez por punto de muestreo y comparte el historial con tu laboratorio.">
   <meta name="theme-color" content="#10241f">
   <title>Tricorder Agua | Auditoría de agua en campo</title>
   <link rel="stylesheet" href="styles.css">
@@ -23,10 +23,10 @@
     <section class="hero" id="inicio">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Estación portátil de auditoría</p>
-          <h1>Cada muestra,<br><em>con historia.</em></h1>
-          <p class="intro">Registra temperatura, pH y turbidez en campo. Vincula cada lectura con su recipiente mediante RFID y entrega al laboratorio un historial listo para consultar.</p>
-          <div class="actions"><a class="button primary" href="#panel">Explorar demo</a><a class="button outline" href="#sistema">Cómo funciona</a></div>
+          <p class="eyebrow"><span></span> Para pozos, cisternas y laboratorios</p>
+          <h1>Conoce mejor<br><em>tu agua.</em></h1>
+          <p class="intro">Revisa el agua de tu pozo o cisterna y compara tus lecturas con el tiempo. Registra la temperatura y las señales de pH y turbidez. Cada muestra queda vinculada a una etiqueta RFID y puedes compartir el historial con un laboratorio.</p>
+          <div class="actions"><a class="button primary" href="#panel">Explorar demo</a><a class="button outline" href="#usos">Ver casos de uso</a></div>
         </div>
         <figure class="hero-figure">
           <img src="prototipo.jpg" width="1000" height="1000" alt="Concepto del prototipo de cartón con sondas junto a un recipiente de agua etiquetado" fetchpriority="high">
@@ -40,10 +40,24 @@
       </div>
     </section>
 
-    <section class="section shell" id="sistema" aria-labelledby="sistema-titulo">
+    <section class="section shell" id="usos" aria-labelledby="usos-titulo">
+      <div class="section-heading">
+        <p class="eyebrow">Casos de uso</p>
+        <h2 id="usos-titulo">Del pozo al laboratorio</h2>
+        <p>Para quienes revisan el agua en casa, en el rancho o durante una visita de mantenimiento, y para los laboratorios que reciben sus muestras.</p>
+      </div>
+      <div class="comparison">
+        <article class="compare-card featured"><h3>Pozos</h3><p>Toma lecturas del mismo punto en fechas distintas para ver cómo cambian. Por ejemplo, compara el registro habitual con una lectura después de una lluvia intensa o un cambio de bomba.</p></article>
+        <article class="compare-card"><h3>Cisternas</h3><p>Compara lecturas antes y después de una limpieza o al cambiar de proveedor de agua. Si revisas varias cisternas, identifica cada punto con su propia etiqueta.</p></article>
+        <article class="compare-card"><h3>Laboratorios</h3><p>Recibe el historial de campo en CSV con la fecha, la hora y el identificador RFID de cada muestra. Consulta qué lecturas se estabilizaron durante la captura.</p></article>
+      </div>
+      <p class="compare-note">Para determinar si el agua es apta para beber, solicita un análisis de potabilidad a un laboratorio.</p>
+    </section>
+
+    <section class="section shell sampling" id="sistema" aria-labelledby="sistema-titulo">
       <div class="section-heading"><p class="eyebrow">Flujo de muestreo</p><h2 id="sistema-titulo">Del recipiente al registro</h2><p>Un ESP32-S3, tres sensores y un lector RFID en una estación portátil con carcasa de cartón.</p></div>
       <ol class="steps">
-        <li><h3>Identifica el recipiente</h3><p>Acerca el lector al sticker RFID del tanque o punto de muestreo. La estación usa el identificador de la etiqueta para asociar las lecturas.</p></li>
+        <li><h3>Identifica tu muestra</h3><p>Acerca el lector a la etiqueta RFID del recipiente o del punto donde tomaste el agua. Así puedes distinguir las lecturas de cada pozo o cisterna en el historial.</p></li>
         <li><h3>Registra los tres sensores</h3><p>El reloj DS1307 marca la hora. El equipo indica si las señales de pH y turbidez se estabilizaron durante la captura.</p></li>
         <li><h3>Comparte el historial</h3><p>Descarga el CSV desde el Wi-Fi del equipo. Ábrelo en el panel web o comparte una copia publicada con tu equipo de laboratorio.</p></li>
       </ol>
@@ -83,7 +97,7 @@
     </section>
 
     <section class="section shell" id="comparativa" aria-labelledby="comparativa-titulo">
-      <div class="section-heading"><p class="eyebrow">Comparativa</p><h2 id="comparativa-titulo">Elige según tu muestreo</h2><p>Tricorder Agua es una opción para levantamientos piloto que necesitan reunir tres señales y seguir cada recipiente desde la toma hasta el archivo.</p></div>
+      <div class="section-heading"><p class="eyebrow">Comparativa</p><h2 id="comparativa-titulo">Elige según tu muestreo</h2><p>Si vas a revisar el mismo pozo o cisterna varias veces, Tricorder Agua reúne las tres lecturas, la fecha y el origen de la muestra en un solo archivo.</p></div>
       <div class="comparison">
         <article class="compare-card featured"><p class="eyebrow">Prototipo</p><h3>Tricorder Agua</h3><p>Temperatura en °C, señales crudas de pH y turbidez, identificación RFID, fecha y exportación CSV por Wi-Fi local.</p></article>
         <article class="compare-card"><p class="eyebrow">Analizador de bolsillo</p><h3>Hanna HI98129</h3><p>Combina pH, conductividad, sólidos disueltos y temperatura. Su formato compacto favorece mediciones puntuales.</p><a href="https://hannainst.com/hi98129-ph-ec-tds-tester.html">Ficha de Hanna Instruments</a></article>
